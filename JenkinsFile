@@ -1,0 +1,45 @@
+pipeline{
+    agent any
+    stages{
+        stage("Run tests usingg pyyest"){
+            steps{
+                echo "Running tests using pytest"
+                bat "python -m pip install -r requirements.txt"
+                bat "start /B python app.py"
+                bat "ping 127.0.0.1 -n 5 > nul"
+                bat "python -m pytest -v"
+            }
+        }
+        stage("login"){
+            steps{
+                bat "docker login -u shivaji108 -p Kaveri@1729"
+            }
+        }
+        stage("Build image"){
+            steps{
+                bat "docker build -t seleniumapp:v1 ."
+            }
+        }
+        stage("push image"){
+            steps{
+                bat "docker tag seleniumapp:v1 shivaji108/sample:seleimg"
+                bat "docker push shivaji108/sample:seleimg"
+            }
+        }
+        stage("deployment"){
+            steps{
+                kubectl apply -f deployment.yaml --validate=false
+                kubectl apply -f service.yaml
+            }
+        }
+    }
+    post{
+        sucess{
+            echo "Testcaes passed successfully"
+        }
+        failure{
+            echo "testcases failed"
+        }
+    }
+
+}
