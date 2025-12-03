@@ -15,11 +15,7 @@ pipeline{
                 bat "docker login -u shivaji108 -p Kaveri@1729"
             }
         }
-        stage("Build image"){
-            steps{
-                bat "docker build -t seleniumapp ."
-            }
-        }
+    
         stage("push image"){
             steps{
                 bat "docker tag seleniumapp:v1 shivaji108/sample:seleimg"
