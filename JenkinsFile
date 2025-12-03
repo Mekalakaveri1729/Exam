@@ -35,13 +35,5 @@ pipeline{
             
         }
     }
-    post{
-        sucess{
-            echo "Testcaes passed successfully"
-        }
-        failure{
-            echo "testcases failed"
-        }
-    }
 
 }
