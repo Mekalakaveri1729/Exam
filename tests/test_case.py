@@ -53,6 +53,7 @@ def test_valid_input(setup_teardown: WebDriver):
     time.sleep(2)
     current_url=driver.current_url
     assert "/submit" in current_url,f'expected greeting page but find {current_url}'
-    body_text=driver.fibd_element(By.TAG_NAME,"body").text
+    body_text=driver.find_element(By.TAG_NAME,"body").text
     assert "Hello,Kaveri!Welcome to the Website" in body_text,f'expected not matched with {body_text}'
+
 
