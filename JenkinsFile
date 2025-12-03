@@ -28,12 +28,19 @@ pipeline{
         }
         stage("deployment"){
             
-                 steps{
+        steps{
               bat 'kubectl apply -f deployment.yaml --validate=false'
             bat 'kubectl apply -f service.yaml '
             }
             
         }
     }
-
+post{
+ success{
+            echo "Testcaes passed successfully"
+        }
+        failure{
+            echo "testcases failed"
+        }
+}
 }
