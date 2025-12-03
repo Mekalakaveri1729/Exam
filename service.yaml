@@ -6,9 +6,8 @@ spec:
   selector:
     app: seleniumapp
   ports:
-    - protocol:TCP
-      port:80
-      targetPort:5000
-      nodePort:30011
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+      nodePort: 30011
   type: NodePort
-  
