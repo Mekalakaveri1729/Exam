@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind:Deployment
+metadata:
+  name:seleniumapp-Deployment
+spec:
+  replicas:1
+  selector:
+    matchLabels:
+      app:seleniumapp
+  template:
+    metadata:
+      labels:
+        app:seleniumapp
+    spec:
+      containers:
+      - name:seleniumapp
+        image:shivaji108/sample:seleimg 
+        ports:
+        - containerPort:5000  
