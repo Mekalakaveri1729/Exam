@@ -17,7 +17,7 @@ pipeline{
         }
         stage("Build image"){
             steps{
-                bat "docker build -t seleniumapp:v1 ."
+                bat "docker build -t seleniumapp ."
             }
         }
         stage("push image"){
