@@ -27,10 +27,12 @@ pipeline{
             }
         }
         stage("deployment"){
-            steps{
-                kubectl apply -f deployment.yaml --validate=false
-                kubectl apply -f service.yaml
+            
+                 steps{
+              bat 'kubectl apply -f deployment.yaml --validate=false'
+            bat 'kubectl apply -f service.yaml '
             }
+            
         }
     }
     post{
